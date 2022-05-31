@@ -1,4 +1,4 @@
-import './TodoItem.module.css';
+import './TodoItem.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -46,7 +46,7 @@ export class TodoItem extends React.PureComponent {
 
     const { handleChangeProps, deleteTodoProps, setUpdate } = this.props;
     return (
-      <li className={styles.item}>
+      <li className="item">
         <div onDoubleClick={this.handleEditing} style={viewMode}>
           <input
             type="checkbox"
@@ -60,7 +60,7 @@ export class TodoItem extends React.PureComponent {
         </div>
         <input
           type="text"
-          className={styles.textInput}
+          className="textInput"
           style={editMode}
           value={title}
           onChange={(e) => {
