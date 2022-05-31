@@ -3,25 +3,28 @@ import Header from './Header';
 import TodosList from './TodosList';
 
 export class TodoContainer extends Component {
-  state = {
-    todos: [
-      {
-        id: 1,
-        title: 'Setup development environment',
-        completed: true,
-      },
-      {
-        id: 2,
-        title: 'Develop website and add content',
-        completed: false,
-      },
-      {
-        id: 3,
-        title: 'Deploy to live server',
-        completed: false,
-      },
-    ],
-  };
+  constructor() {
+    super();
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          title: 'Setup development environment',
+          completed: true,
+        },
+        {
+          id: 2,
+          title: 'Develop website and add content',
+          completed: false,
+        },
+        {
+          id: 3,
+          title: 'Deploy to live server',
+          completed: false,
+        },
+      ],
+    };
+  }
 
   // Check Box
   handleChange = (id) => {
@@ -40,19 +43,21 @@ export class TodoContainer extends Component {
 
   // Delete button
   delTodo = (id) => {
+    const { todos } = this.state;
     this.setState({
       todos: [
-        ...this.state.todos.filter((todo) => todo.id !== id),
+        ...todos.filter((todo) => todo.id !== id),
       ],
     });
   };
 
   render() {
+    const { todos } = this.state;
     return (
       <div>
         <Header />
         <TodosList
-          todos={this.state.todos}
+          todos={todos}
           handleChangeProps={this.handleChange}
           deleteTodoProps={this.delTodo}
         />
