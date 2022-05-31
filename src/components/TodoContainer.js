@@ -7,47 +7,43 @@ export class TodoContainer extends Component {
     todos: [
       {
         id: 1,
-        title: "Setup development environment",
-        completed: true
+        title: 'Setup development environment',
+        completed: true,
       },
       {
         id: 2,
-        title: "Develop website and add content",
-        completed: false
+        title: 'Develop website and add content',
+        completed: false,
       },
       {
         id: 3,
-        title: "Deploy to live server",
-        completed: false
-      }
-    ]
+        title: 'Deploy to live server',
+        completed: false,
+      },
+    ],
   };
 
-  //Check Box
-  handleChange = id => {
-    this.setState(prevState => {
-      return {
-        todos: prevState.todos.map(todo => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              completed: !todo.completed,
-            }
-          }
-          return todo
-        }),
-      }
-    })
+  // Check Box
+  handleChange = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
   };
 
   // Delete button
-  delTodo = id => {
+  delTodo = (id) => {
     this.setState({
       todos: [
-        ...this.state.todos.filter(todo => {
-          return todo.id !== id;
-        })
-      ]
+        ...this.state.todos.filter((todo) => todo.id !== id),
+      ],
     });
   };
 
@@ -55,11 +51,11 @@ export class TodoContainer extends Component {
     return (
       <div>
         <Header />
-        <TodosList 
-          todos={this.state.todos} 
+        <TodosList
+          todos={this.state.todos}
           handleChangeProps={this.handleChange}
           deleteTodoProps={this.delTodo}
-        />  
+        />
       </div>
     );
   }
