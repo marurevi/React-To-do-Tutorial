@@ -23,6 +23,7 @@ export class TodoContainer extends Component {
     ]
   };
 
+  //Check Box
   handleChange = id => {
     this.setState(prevState => {
       return {
@@ -39,11 +40,26 @@ export class TodoContainer extends Component {
     })
   };
 
+  // Delete button
+  delTodo = id => {
+    this.setState({
+      todos: [
+        ...this.state.todos.filter(todo => {
+          return todo.id !== id;
+        })
+      ]
+    });
+  };
+
   render() {
     return (
       <div>
         <Header />
-        <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} />  
+        <TodosList 
+          todos={this.state.todos} 
+          handleChangeProps={this.handleChange}
+          deleteTodoProps={this.delTodo}
+        />  
       </div>
     );
   }
