@@ -14,6 +14,7 @@ export class TodosList extends React.PureComponent {
             todo={todo}
             handleChangeProps={handleChangeProps}
             deleteTodoProps={deleteTodoProps}
+            setUpdate={setUpdate}
           />
         ))}
       </ul>
@@ -23,6 +24,7 @@ export class TodosList extends React.PureComponent {
 TodosList.propTypes = {
   handleChangeProps: PropTypes.func.isRequired,
   deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   todos: PropTypes.array.isRequired,
 };
